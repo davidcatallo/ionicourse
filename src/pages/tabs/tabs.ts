@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { HeroesPage } from '../heroes/heroes';
+import { ProfilPage } from '../profil/profil';
 
 /**
  * Generated class for the TabsPage page.
@@ -14,11 +15,7 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class TabsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TabsPage');
-  }
+  heroesPage = HeroesPage;
+  profilPage = ProfilPage;
 
 }
