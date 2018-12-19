@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { SingleHeroPage } from './single-hero/single-hero';
 import { Hero } from '../../models/Hero';
+import { HeroesService } from '../../services/heroes.service';
 
 @Component({
     selector: 'page-heroes',
@@ -9,36 +10,17 @@ import { Hero } from '../../models/Hero';
 })
 
 export class HeroesPage {
-    heroesList: Hero[] = [
-        {
-            name:"Superman",
-            description: [
-                'Ne supporte pas la kryptonite',
-                'Est copain avec batman de temps en temps'
-            ],
-            isInCombat: true
-        },
-        {
-           name: "Felix the cat",
-           description: [
-               'A 7 vies',
-               'Attaque avec des griffes'
-           ] ,
-           isInCombat: false
-        },
-        {
-            name: "The Joker",
-            description: [
-                'Ennemi de Batman',
-                'Meurtrier à Gotham City'
-            ],
-            isInCombat: false
-        }
-    ]
-    constructor(private navCtrl: NavController) {
 
+    heroesList: Hero [];
+    
+    constructor(private navCtrl: NavController,
+                private heroesService: HeroesService) {}
+    ionViewWillEnter(){
+        this.heroesList = this.heroesService.heroesList.slice();
     }
     onLoadHero(name: string) {
         this.navCtrl.push(SingleHeroPage, {heroName: name});
     }
 }
+
+
